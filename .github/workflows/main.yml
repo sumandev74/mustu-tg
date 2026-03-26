@@ -9,9 +9,9 @@ jobs:
       matrix:
         n: [1,2,3,4,5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: chmod +x mustafa
-      - run: ./mustafa 34.4.26.189 23734 10 100
+      - run: ./mustafa 20.56.646 28466 10 100
 
   stage-1:
     needs: stage-0
@@ -20,9 +20,9 @@ jobs:
       matrix:
         n: [1,2,3,4,5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: chmod +x mustafa
-      - run: ./mustafa 34.4.26.189 23734 180 100
+      - run: ./mustafa 20.56.646 28466 180 100
 
   stage-2-calc:
     runs-on: ubuntu-latest
@@ -45,8 +45,8 @@ jobs:
       matrix:
         iteration: ${{ fromJson(needs.stage-2-calc.outputs.matrix_list) }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Sequential 10s Burst
         run: |
           chmod +x mustafa
-          ./mustafa 34.4.26.189 23734 10 100
+          ./mustafa 20.56.646 28466 10 100
